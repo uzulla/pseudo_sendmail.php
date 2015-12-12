@@ -26,7 +26,7 @@ $cmd->option('f')
 $cmd->option('o')
     ->aka('output_filename')
     ->default(DEFAULT_OUTPUT_FILENAME)
-    ->describedAs('output file name, base dir require.')
+    ->describedAs('output file name, require base dir.')
     ->must(function ($path) {
         $dir = basename($path);
         return file_exists($dir) && filetype($dir) === 'dir';

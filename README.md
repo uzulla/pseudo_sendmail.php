@@ -1,4 +1,4 @@
-# Psedo sendmail
+# Pseudo sendmail
 
 This is pseudo `sendmail` command for mail-form developer.
 
