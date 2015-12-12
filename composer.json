@@ -1,0 +1,6 @@
+{
+    "require": {
+        "nategood/commando": "^0.2.7",
+        "swiftmailer/swiftmailer": "^5.4"
+    }
+}
