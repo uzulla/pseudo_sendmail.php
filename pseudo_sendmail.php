@@ -1,7 +1,12 @@
 #!/usr/bin/env php
 <?php
-require_once __DIR__.'/vendor/autoload.php';
+// use strict;
+set_error_handler(function($errno, $errstr, $errfile, $errline){
+    echo "ERROR({$errno}) at {$errfile}:{$errline}, {$errstr}\n";
+    exit(1);
+});
 
+require_once __DIR__.'/vendor/autoload.php';
 
 foreach($_SERVER['argv'] as &$token){
     // this is dirty patch.
