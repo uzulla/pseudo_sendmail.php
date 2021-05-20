@@ -1,46 +1,56 @@
 # Pseudo sendmail
 
-This is pseudo `sendmail` command for mail-form developer.
+This is pseudo `sendmail` command for developer.
 
-Write raw mail(eml) to file, when send mail by php function.
+Write raw mail(eml) to file.
 
-# usage
+## setup
 
-setup and send mail by php.
+1. git clone and composer install.
+2. set/change your sendmail path configuration.
+3. send mail.
 
-will create `/tmp/mail.eml`.
-
-FYI: mail.app can open .eml file well. `$ open /tmp/mail.eml`.
-
-# setup
-
-1, git clone and composer install.
-
-2, change sendmail_path in `php.ini`.
+### php.ini sample
 
 ```
-sendmail_path = "/path/to/pseudo_sendmail.php"
+sendmail_path = "/{this dir}/bin/sendmail"
 ```
 
 FYI: `sendmail_path` is `PHP_INI_SYSTEM`. so, You can't set by `ini_set()`.
 
-3, send mail.
+### SwiftMailer sample
 
+```
+// ...
+$transport = new Swift_SendmailTransport(""/{this dir}/bin/sendmail" -ti");
+$mailer = new Swift_Mailer($transport);
+// ...
+```
 
-# require
+> `-ti` is important. If use SwiftMailer default option `-bs`, the script will be hangup.  
 
-I just tested on php7.0 + OSX.
+## option / settings
 
-maybe work with PHP>=5.4 .
+- `-o/path/to/output` specify output file path
+- `-na` not append eml. output file clear when every send reset.
 
-# do you need mail sending sample?
+```
+sendmail -it -fasdf@example.jp -o/tmp/test.eml
+sendmail -it -fasdf@example.jp -na -o/tmp
+```
 
-see and execute `text/test_send.php`.
+> `-i -t -f` or other options will be ignored.
 
-# options
+> don't `-o /file`, must `-o/file`.
 
-see `pseudo_sendmai.php --help`.
+## require
 
-# LICENSE
+- PHP>=7.4
+
+## do you need mail sending sample?
+
+see `tests/*`.
+
+## LICENSE
 
 MIT

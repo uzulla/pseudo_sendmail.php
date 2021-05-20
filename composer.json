@@ -1,6 +1,23 @@
 {
-    "require": {
-        "nategood/commando": "^0.2.7",
-        "swiftmailer/swiftmailer": "^5.4"
+    "name": "uzulla/pseudo_sendmail",
+    "description": "pseudo sendmail by php",
+    "license": "MIT",
+    "require-dev": {
+        "php": ">=7.3",
+        "swiftmailer/swiftmailer": "^6.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "PseudoSendmail\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PseudoSendmail\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test" : "phpunit"
     }
 }
