@@ -6,7 +6,7 @@ Write raw mail(eml) to file.
 
 ## setup
 
-1. git clone and composer install.
+1. `composer require --dev uzulla/pseudo_sendmail`. or git clone and composer install.
 2. set/change your sendmail path configuration.
 3. send mail.
 
@@ -14,6 +14,8 @@ Write raw mail(eml) to file.
 
 ```
 sendmail_path = "/{this dir}/bin/sendmail"
+# If you installed composer, also can be use following path.
+sendmail_path = "/{project path}/vendor/bin/sendmail"
 ```
 
 FYI: `sendmail_path` is `PHP_INI_SYSTEM`. so, You can't set by `ini_set()`.
@@ -22,7 +24,7 @@ FYI: `sendmail_path` is `PHP_INI_SYSTEM`. so, You can't set by `ini_set()`.
 
 ```
 // ...
-$transport = new Swift_SendmailTransport(""/{this dir}/bin/sendmail" -ti");
+$transport = new Swift_SendmailTransport("/{this dir}/bin/sendmail -ti");
 $mailer = new Swift_Mailer($transport);
 // ...
 ```
